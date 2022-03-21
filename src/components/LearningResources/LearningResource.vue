@@ -3,7 +3,7 @@
         <base-card>
         <header>
             <h3>{{subject}}</h3>
-            <button>Delete</button>
+            <base-button mode="flat"  type="button">Delete</base-button>
         </header>
         <p>{{description}}</p>
         <nav><a :href="link">View Resource</a></nav>
@@ -12,9 +12,7 @@
 </template>
 
 <script>
-import BaseCard from "../UI/BaseCard.vue";
 export default {
-  components: { BaseCard },
   props: {
     subject: { type: String },
     description: { type: String },
@@ -38,7 +36,4 @@ a:hover {
   font-weight: bolder;
 }
 
-button {
-  max-height: 2rem;
-}
 </style>

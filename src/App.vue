@@ -1,11 +1,13 @@
 <template>
-  <LearningResounces :resources=storedResources></LearningResounces>
+<the-header title="Remember Me"></the-header>
+  <learning-resounces :resources=storedResources></learning-resounces>
 </template>
 
 <script>
 import LearningResounces from './components/LearningResources/LearningResources.vue';
+import TheHeader from './components/Layout/TheHeader.vue'
 export default {
-  components: { LearningResounces },
+  components: { LearningResounces ,TheHeader},
   data() {
     return {
       storedResources: [
@@ -27,8 +29,8 @@ export default {
 };
 </script>
 <style>
-body{
-  margin-left: 1rem;
-  margin-right:1rem
+*{
+  margin: 0;
+  padding:0;
 }
 </style>

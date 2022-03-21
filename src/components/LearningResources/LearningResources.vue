@@ -1,12 +1,12 @@
 <template>
     <ul>
-    <LearningResounce
+    <learning-resounce
       v-for="res in resources"
       :key="res.id"
       :subject="res.title"
       :description="res.description"
       :link="res.link"
-    ></LearningResounce>
+    ></learning-resounce>
   </ul>
 </template>
 <script>
