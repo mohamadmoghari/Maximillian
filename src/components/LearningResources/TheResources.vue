@@ -1,25 +1,26 @@
 <template>
   <base-card>
-    <base-button
-      @click="setSelectedTab('LearningResources')"
-      :mode="selectedTabModeForLearningResources"
-      >Resources</base-button
+    <base-button :mode="selectedTabModeForLearningResources"
+    @click="setSelectedTab('LearningResources')"
+      ><router-link to="/LearningResources">Resources</router-link></base-button
     >
     <base-button
       @click="setSelectedTab('AddResource')"
       :mode="selectedTabModeForAddResource"
-      >Add Resource</base-button
+      ><router-link to='/AddResource'>Add Resource</router-link></base-button
     >
   </base-card>
-  <keep-alive>
+  <!-- <keep-alive>
     <component :is="selectedTab"></component>
-  </keep-alive>
+  </keep-alive> -->
+
+  <router-view></router-view>
 </template>
 <script>
-import AddResource from "./AddResource.vue";
-import LearningResources from "./LearningResources.vue";
+// import AddResource from "./AddResource.vue";
+// import LearningResources from "./LearningResources.vue";
 export default {
-  components: { AddResource, LearningResources },
+  //components: { AddResource, LearningResources },
   provide() {
     return {
       resources: this.storedResources,
@@ -29,7 +30,7 @@ export default {
   },
   data() {
     return {
-      selectedTab: "LearningResources",
+       selectedTab: "LearningResources",
       storedResources: [
         {
           id: "official-guid",
@@ -55,9 +56,9 @@ export default {
     },
   },
   methods: {
-    setSelectedTab(tab) {
-      this.selectedTab = tab;
-    },
+     setSelectedTab(tab) {
+       this.selectedTab = tab;
+     },
     SaveData(title, desction, link) {
       const newResource = {
         id: new Date().toISOString(),
@@ -67,11 +68,12 @@ export default {
       };
 
       this.storedResources.unshift(newResource);
-      this.selectedTab = "LearningResources";
+      //this.selectedTab = "LearningResources";
+      this.$router.push('/LearningResources')
     },
     RemoveData(id) {
-      const selectedIndex=this.storedResources.findIndex(t=>t.id==id);
-      this.storedResources.splice(selectedIndex,1);
+      const selectedIndex = this.storedResources.findIndex((t) => t.id == id);
+      this.storedResources.splice(selectedIndex, 1);
     },
   },
 };
